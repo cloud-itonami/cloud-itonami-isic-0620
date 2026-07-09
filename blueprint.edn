@@ -1,0 +1,11 @@
+{:itonami.blueprint/id "cloud-itonami-isic-0620"
+ :itonami.blueprint/name "Natural gas extraction"
+ :itonami.blueprint/isic-rev5 "0620"
+ :itonami.blueprint/domain :upstream/gas-extraction
+ :itonami.blueprint/license "AGPL-3.0-or-later"
+ :itonami.blueprint/social-impact [:safety :environmental-protection :transparency]
+ :itonami.blueprint/governor :gas-well-safety-governor
+ :itonami.blueprint/required-technologies [:robotics :identity :forms :dmn :bpmn :audit-ledger :optimization]
+ :itonami.blueprint/status :public-oss
+ :itonami.blueprint/robotics true
+ :itonami.blueprint/maturity :implemented}
