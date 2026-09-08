@@ -31,7 +31,7 @@
   real well or settling real production itself (that is `gasfield.
   operation`'s `:well/extract`/`:production/settle`, always human-gated
   -- see README `Actuation`)."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (defn- unsigned-certificate
   "Every certificate this actor produces is UNSIGNED -- signature is
@@ -139,7 +139,7 @@
     (throw (ex-info "well-extract: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "well-extract: sequence must be >= 0" {})))
-  (let [extract-number (str (str/upper-case jurisdiction) "-EXTRACT-" (zero-pad sequence 6))
+  (let [extract-number (str (str/upper jurisdiction) "-EXTRACT-" (zero-pad sequence 6))
         record {"record_id" extract-number
                 "kind" "well-extract-draft"
                 "well_id" well-id
@@ -164,7 +164,7 @@
     (throw (ex-info "production-settlement: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "production-settlement: sequence must be >= 0" {})))
-  (let [settlement-number (str (str/upper-case jurisdiction) "-PROD-" (zero-pad sequence 6))
+  (let [settlement-number (str (str/upper jurisdiction) "-PROD-" (zero-pad sequence 6))
         record {"record_id" settlement-number
                 "kind" "production-settlement-draft"
                 "well_id" well-id
