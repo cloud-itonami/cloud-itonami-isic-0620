@@ -144,7 +144,7 @@ real status-lifecycle bug (ADR-2607071320).
 `gasfield.store/Store` is implemented by both `MemStore` (atom-backed,
 default for dev/tests/demo) and `DatomicStore` (`langchain.db`-backed),
 proven to satisfy the same contract in
-`test/gasfield/store_contract_test.clj`. The ledger stays append-only on
+`test/gasfield/store_contract_test.cljk`. The ledger stays append-only on
 every backend: which gas well was screened for a reservoir pressure outside
 its window, an annular pressure above MAASP, a CO2 content above the
 corrosion ceiling, an H2S concentration above the IDLH, or an open
@@ -214,7 +214,7 @@ hiccup can never auto-extract a gas well or auto-settle production.
   one), all discipline-reuse documented as such per
   `cloud-itonami-isic-0162` Decision 3.
 - `MemStore` || `DatomicStore` parity is proven by
-  `test/gasfield/store_contract_test.clj`.
+  `test/gasfield/store_contract_test.cljk`.
 - 41 tests / 205 assertions pass; lint is clean; the demo
   (`clojure -M:dev:run`) walks one clean extract + settlement lifecycle,
   plus eight HARD-hold scenarios (no spec-basis, reservoir pressure,

@@ -62,7 +62,7 @@ the three `:social-impact` tags in `blueprint.edn` (`:safety`,
 `:environmental-protection`, `:transparency`).
 
 This is the rule the companion contract test
-(`test/gasfield/governor_contract_test.clj`) encodes end-to-end: the
+(`test/gasfield/governor_contract_test.cljk`) encodes end-to-end: the
 GasFieldAdvisor never extracts gas from a gas well or settles production the
 Gas Well Safety Governor would reject, `:well/extract` and
 `:production/settle` NEVER auto-commit at any phase, `:well/intake` (no direct
