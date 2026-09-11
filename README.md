@@ -77,7 +77,7 @@ never autonomous, at any phase, by construction.** Two independent
 layers enforce this (`gasfield.governor`'s `:well/extract`/`:production/
 settle` high-stakes gate and `gasfield.phase`'s phase table, which never
 puts either op in any phase's `:auto` set) -- see `gasfield.phase`'s
-docstring and `test/gasfield/phase_test.clj`'s
+docstring and `test/gasfield/phase_test.cljk`'s
 `well-extract-never-auto-at-any-phase`/`production-settle-never-auto-at-
 any-phase`. The actor may draft, check and recommend; a human production
 superintendent is always the one who actually opens a gas well to flow
@@ -176,14 +176,14 @@ stack.
 
 | File | Role |
 |---|---|
-| `src/gasfield/store.cljc` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + extract AND production history (dual history). The double-actuation guard checks dedicated `:gas-extracted?`/`:production-settled?` booleans rather than a `:status` value |
-| `src/gasfield/registry.cljc` | Extract/settlement draft records, plus the self-contained gas-well-safety range-check pure functions (`pressure-out-of-range?`, `well-integrity-annular-pressure-excessive?`, `co2-corrosive?`, `h2s-toxic?`) the governor re-verifies against -- no external capability library to delegate to |
-| `src/gasfield/facts.cljc` | Per-jurisdiction well-construction/well-control/sour-service catalog with an official spec-basis citation + NIOSH H2S IDLH per entry (expressed as 0.005 vol% = 50 ppm), honest coverage reporting |
-| `src/gasfield/gasfieldadvisor.cljc` | **GasFieldAdvisor** -- `mock-advisor` ‖ `llm-advisor`; intake/reservoir-assessment/extract/settlement proposals |
-| `src/gasfield/governor.cljc` | **Gas Well Safety Governor** -- 7 HARD checks (spec-basis · evidence-incomplete · pressure-out-of-range, the aerospace two-sided-tolerance discipline · well-integrity-annular-pressure-excessive, the fabrication ratio discipline · h2s-toxic-threshold · co2-corrosion-threshold · integrity-flag-unresolved) + 2 double-actuation guards + 1 soft (confidence/actuation gate) |
-| `src/gasfield/phase.cljc` | **Phase 0→3** -- read-only → assisted intake → assisted assess → supervised (extract/settlement always human; gas-well intake is the ONLY auto-eligible op, no direct capital risk) |
-| `src/gasfield/operation.cljc` | **OperationActor** -- langgraph StateGraph |
-| `src/gasfield/sim.cljc` | demo driver |
+| `src/gasfield/store.cljk` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + extract AND production history (dual history). The double-actuation guard checks dedicated `:gas-extracted?`/`:production-settled?` booleans rather than a `:status` value |
+| `src/gasfield/registry.cljk` | Extract/settlement draft records, plus the self-contained gas-well-safety range-check pure functions (`pressure-out-of-range?`, `well-integrity-annular-pressure-excessive?`, `co2-corrosive?`, `h2s-toxic?`) the governor re-verifies against -- no external capability library to delegate to |
+| `src/gasfield/facts.cljk` | Per-jurisdiction well-construction/well-control/sour-service catalog with an official spec-basis citation + NIOSH H2S IDLH per entry (expressed as 0.005 vol% = 50 ppm), honest coverage reporting |
+| `src/gasfield/gasfieldadvisor.cljk` | **GasFieldAdvisor** -- `mock-advisor` ‖ `llm-advisor`; intake/reservoir-assessment/extract/settlement proposals |
+| `src/gasfield/governor.cljk` | **Gas Well Safety Governor** -- 7 HARD checks (spec-basis · evidence-incomplete · pressure-out-of-range, the aerospace two-sided-tolerance discipline · well-integrity-annular-pressure-excessive, the fabrication ratio discipline · h2s-toxic-threshold · co2-corrosion-threshold · integrity-flag-unresolved) + 2 double-actuation guards + 1 soft (confidence/actuation gate) |
+| `src/gasfield/phase.cljk` | **Phase 0→3** -- read-only → assisted intake → assisted assess → supervised (extract/settlement always human; gas-well intake is the ONLY auto-eligible op, no direct capital risk) |
+| `src/gasfield/operation.cljk` | **OperationActor** -- langgraph StateGraph |
+| `src/gasfield/sim.cljk` | demo driver |
 | `test/gasfield/*_test.clj` | governor contract · phase invariants · store parity · registry conformance · facts coverage |
 
 ## Business-process coverage (honest)
