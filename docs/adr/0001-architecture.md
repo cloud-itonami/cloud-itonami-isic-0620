@@ -216,7 +216,7 @@ hiccup can never auto-extract a gas well or auto-settle production.
 - `MemStore` || `DatomicStore` parity is proven by
   `test/gasfield/store_contract_test.cljk`.
 - 41 tests / 205 assertions pass; lint is clean; the demo
-  (`clojure -M:dev:run`) walks one clean extract + settlement lifecycle,
+  (`kbb -M:dev:run`) walks one clean extract + settlement lifecycle,
   plus eight HARD-hold scenarios (no spec-basis, reservoir pressure,
   annular/MAASP, CO2 corrosion, H2S/IDLH, integrity flag, double extraction,
   double settlement), end-to-end.
