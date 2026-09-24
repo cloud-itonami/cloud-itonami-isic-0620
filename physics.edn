@@ -1,0 +1,20 @@
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isic-0620"
+ :cases
+ [{:id :gas-gathering-line
+   :kind :pipe-flow
+   :procedure "after the robot opens the gas tree, gas at ~50 bar flows through a 4-inch gathering line to the compressor station"
+   :params {:diameter-m 0.1023 :length-m 3000.0 :roughness-m 4.5e-5
+            :density-kg-m3 40.0 :viscosity-pa-s 1.2e-5 :pump-efficiency 0.75 :elevation-m 0.0}
+   :sweep {:param :q-m3s :values [0.02 0.04 0.06 0.08 0.10]}
+   :quantity :pressure-drop-pa
+   :limit {:max 5.0e5 :basis "estimate: keep the drop under ~10 % of the 50 bar line pressure, where a constant-density Darcy-Weisbach model still holds"}
+   :boundary {:lo 0.01 :hi 0.5}}
+  {:id :knockout-drum-drain
+   :kind :tank-drain
+   :procedure "robot opens the dump valve of the inlet knockout drum to drain produced water to the water tank"
+   :params {:tank-area-m2 1.0 :h0-m 1.5 :h-target-m 0.2 :cd 0.62 :dt-s 0.5}
+   :sweep {:param :orifice-area-m2 :values [5.0e-4 1.0e-3 2.0e-3 3.0e-3 4.0e-3]}
+   :quantity :time-to-target-s
+   :limit {:max 900.0 :basis "estimate: drum must dump its liquid within 15 min so it does not carry over into the compressor suction"}
+   :boundary {:lo 1.0e-4 :hi 1.0e-2}}]}
